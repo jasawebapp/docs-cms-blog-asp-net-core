@@ -1,0 +1,27 @@
+{
+  "name": "JasaWebApp",
+  "short_name": "JasaWebApp",
+  "description": "JasaWebApp Create Aps And Website Easy",
+  "icons": [
+    {
+      "src": "/images/android-icon-144x144.png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "/images/apple-icon-152x152.png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "/images/android-icon-192x192.png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icon512x512.png",
+      "sizes": "512x512"
+    }
+  ],
+  "theme_color": "#2a3ba4",
+  "background_color": "#2a3ba4",
+  "display": "standalone",
+  "start_url": "/"
+}
