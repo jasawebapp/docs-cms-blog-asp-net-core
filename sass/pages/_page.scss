@@ -60,7 +60,7 @@
 }
 
 .nav-btn {
-  position: absolute;
+  position: sticky;
   left: 10px;
   transition: all 0.3s;
   background-color: #fff;
@@ -72,4 +72,36 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  margin-top: -10px;
+  z-index: 10;
+  margin-left: -10px;
+}
+
+.pg-container {
+  @media (max-width: 480px) {
+    padding: 0;
+  }
+}
+
+.step-img {
+  box-shadow: 0 0 40px rgba(20, 20, 20, 0.2);
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  display: block;
+  margin-top: 15px;
+
+  &-warning {
+    color: #8a6d3b;
+    background-color: #fcf8e3;
+    border-color: #faebcc;
+  }
+}
+
+.app-main-inner ul li {
+  margin-bottom: 10px;
 }

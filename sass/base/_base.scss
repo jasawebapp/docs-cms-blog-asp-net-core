@@ -11,10 +11,6 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   -webkit-tap-highlight-color: transparent !important;
 }
 
@@ -23,28 +19,11 @@
 }
 
 html {
-  width: 100%;
-  min-height: 100%;
-  position: relative;
-  overflow-y: visible;
-  overflow-x: hidden;
-  font-family: "Poppins", sans-serif;
-  background: #fff;
-
-  &.page-when-header-mobile-nav-open {
-    & body {
-      overflow: hidden;
-    }
-  }
-
-  &.lod-prg,
-  &.lod-prg body {
-    overflow: hidden !important;
-  }
-
-  &.lod-prg #page {
-    display: none;
-  }
+  font-size: 14px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
@@ -56,23 +35,29 @@ body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
   word-wrap: break-word;
-  overflow-y: visible;
-  overflow-x: visible;
+  overflow-y: auto;
+  overflow-x: hidden;
   color: var(--text-color);
 
   &::-webkit-scrollbar-track {
-    background-color: var(--bg-color);
+    background-color: #f1f4f6;
     border-radius: 10px;
   }
 
   &::-webkit-scrollbar {
     width: 15px;
-    background-color: var(--bg-color);
+    background-color: #f1f4f6;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: var(--primary-5);
+    background-color: $primary;
+  }
+
+  @media (max-width: 991px) {
+    &.sidebar-open {
+      overflow: hidden !important;
+    }
   }
 }
 

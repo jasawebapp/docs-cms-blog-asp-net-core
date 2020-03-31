@@ -13,6 +13,7 @@ $(document).ready(function() {
     autohidemode: "leave",
     hidecursordelay: 0
   };
+  var isclickedto = false;
 
   $(".app-sidebar-content").niceScroll(conf);
   setInterval(function() {
@@ -63,7 +64,87 @@ $(document).ready(function() {
       .parent()
       .toggleClass("open");
     $(this)
+      .parent()
+      .removeClass("active");
+    $(this)
       .next()
       .slideToggle();
   });
+
+  document.addEventListener(
+    "gumshoeActivate",
+    function(event) {
+      var li = event.target;
+      $(".app-sidebar-item").removeClass("active");
+      $(li).addClass("active");
+      if (
+        $(li).find(".app-sidebar-dropdown").length > 0 &&
+        $(li).hasClass("open") == false &&
+        isclickedto == false
+      ) {
+        $(li).removeClass("active");
+        $(li)
+          .find(".app-sidebar-dropdown")
+          .trigger("click");
+      }
+
+      if (
+        $(li)
+          .parent()
+          .parent()
+          .parent()
+          .hasClass("app-sidebar-item") &&
+        $(li)
+          .parent()
+          .parent()
+          .parent()
+          .hasClass("open") == false &&
+        isclickedto == false
+      ) {
+        $(li)
+          .parent()
+          .parent()
+          .parent()
+          .removeClass("active");
+        $(li)
+          .parent()
+          .parent()
+          .parent()
+          .find(".app-sidebar-dropdown")
+          .trigger("click");
+      }
+    },
+    false
+  );
+
+  var spy = new Gumshoe(".app-sidebar-list a", {
+    nested: true,
+    events: true,
+    reflow: true
+  });
+
+  $(
+    ".app-sidebar-list > li > div a, .app-sidebar-list > li > a:not(.app-sidebar-dropdown)"
+  ).on("click", function(e) {
+    e.preventDefault();
+    var target = $(this.hash);
+    if (target.length > 0) {
+      isclickedto = true;
+      $("html, body").animate(
+        {
+          scrollTop: target.offset().top
+        },
+        500,
+        "linear",
+        function() {
+          isclickedto = false;
+        }
+      );
+    }
+  });
+
+  spy.setup();
+  spy.detect();
+
+  spy.detect();
 });
